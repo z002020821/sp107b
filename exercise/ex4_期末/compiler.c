@@ -46,7 +46,7 @@ int F() {
     next(); // )
   } else { // Number | Id
     f = nextTemp();   //f = tempIdx(t)
-    char *item = next();
+    char *item = next();  
     emit("t%d = %s\n", f, item);
   }
   return f;
@@ -55,9 +55,9 @@ int F() {
 // E = F (op E)*
 int E() {
   int i1 = F();
-  while (isNext("+ - * / & | ! < > =")) {
-    char *op = next();
-    int i2 = E();
+  while (isNext("+ - * / & | ! < > =")) {   //當下一個字元為運算符號時
+    char *op = next();   //op = 下一個字元(運算符號)
+    int i2 = E();  
     int i = nextTemp();    //i = tempIdx(t)
     emit("t%d = t%d %s t%d\n", i, i1, op, i2);
     i1 = i;
