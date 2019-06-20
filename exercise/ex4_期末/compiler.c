@@ -76,7 +76,7 @@ void ASSIGN() {
 
 // while (E) STMT
 void WHILE() {
-  int whileBegin = nextLabel();  //設定while開始的回復點
+  int whileBegin = nextLabel();  //設定while開始的回復點  nextLabel是為增加回復點
   int whileEnd = nextLabel();    //設定while結束的回復點
   emit("(L%d)\n", whileBegin);
   skip("while");
