@@ -45,7 +45,7 @@ int F() {
     f = E();
     next(); // )
   } else { // Number | Id
-    f = nextTemp();
+    f = nextTemp();   //f = tempIdx(t)
     char *item = next();
     emit("t%d = %s\n", f, item);
   }
@@ -58,7 +58,7 @@ int E() {
   while (isNext("+ - * / & | ! < > =")) {
     char *op = next();
     int i2 = E();
-    int i = nextTemp();
+    int i = nextTemp();    //i = tempIdx(t)
     emit("t%d = t%d %s t%d\n", i, i1, op, i2);
     i1 = i;
   }
@@ -67,7 +67,7 @@ int E() {
 
 // ASSIGN = id '=' E;
 void ASSIGN() {
-  char *id = next();  //id = i
+  char *id = next();  //id = 下一個字元
   skip("=");
   int e = E();
   skip(";");
